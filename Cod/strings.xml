@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SunShine</string>
+    <string name="Vvedite_Text">Введите город</string>
+    <string name="poiskbutton">poiskButton</string>
+</resources>
