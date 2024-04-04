@@ -5,24 +5,29 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sunny"
-    tools:context=".MainActivity" >
+    android:background="@drawable/background"
+    android:foregroundTint="#CAB7B7"
+    tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
+
         <EditText
-            android:id="@+id/SearchGorod"
+            android:id="@+id/Search_Gorod"
             android:layout_width="294dp"
             android:layout_height="51dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="36dp"
+            android:backgroundTint="#FFFFFF"
             android:ems="10"
             android:fontFamily="sans-serif-black"
             android:hint="Название города"
             android:inputType="textPersonName"
-            android:textColor="#282E2E"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#9E9D9D"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,7 +37,7 @@
             android:id="@+id/textGorod"
             android:layout_width="178dp"
             android:layout_height="136dp"
-            android:layout_below="@+id/SearchGorod"
+            android:layout_below="@+id/Search_Gorod"
             android:fontFamily="serif"
             android:gravity="center"
             android:textColor="#FDFFFE"
@@ -50,13 +55,14 @@
             android:layout_height="58dp"
             android:layout_marginTop="29dp"
             android:layout_marginEnd="26dp"
-            android:backgroundTint="#FABF87"
+            android:backgroundTint="#0C200C27"
             android:contentDescription="@string/Vvedite_Text"
             android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/SearchGorod"
+            app:layout_constraintStart_toEndOf="@+id/Search_Gorod"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/poisk" />
+            app:srcCompat="@drawable/poisk"
+            app:tint="#FFFFFF" />
 
         <TextView
             android:id="@+id/city_name"
@@ -72,6 +78,448 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
+
+        <ImageButton
+            android:id="@+id/SunnyButton"
+            android:layout_width="70dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="#040116"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.981"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.96"
+            app:srcCompat="@drawable/sunnyicon"
+            app:tint="#FFFCFC"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/RainButton"
+            android:layout_width="67dp"
+            android:layout_height="61dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="#040218"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.734"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.961"
+            app:srcCompat="@drawable/rainicon"
+            app:tint="#FFFFFF"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+
+
+        <TextView
+            android:id="@+id/SunnyText"
+            android:layout_width="360dp"
+            android:layout_height="97dp"
+            android:layout_marginTop="450dp"
+            android:fontFamily="@font/wendy_one"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <ScrollView
+            android:id="@+id/RainText"
+            android:layout_width="382dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="410dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.486"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck"
+            tools:visibility="visible">
+
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom|center_horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom|center_horizontal"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/humidityImageView"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:background="#00FFFFFF"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.498"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:layout_editor_absoluteY="365dp"
+                            app:tint="#FFFFFF" />
+
+                        <TextView
+                            android:id="@+id/T0002"
+                            android:layout_width="75dp"
+                            android:layout_height="match_parent"
+                            android:gravity="bottom|center_horizontal"
+                            android:text="00-02"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom|center_horizontal"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/humidityImageView2"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:background="#00FFFFFF"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.498"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:layout_editor_absoluteY="365dp"
+                            app:tint="#FFFFFF" />
+
+                        <TextView
+                            android:id="@+id/T0204"
+                            android:layout_width="75dp"
+                            android:layout_height="match_parent"
+                            android:gravity="bottom|center_horizontal"
+                            android:text="02-04"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom|center_horizontal"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/humidityImageView3"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:background="#00FFFFFF"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.498"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:layout_editor_absoluteY="365dp"
+                            app:tint="#FFFFFF" />
+
+                        <TextView
+                            android:id="@+id/T0406"
+                            android:layout_width="75dp"
+                            android:layout_height="match_parent"
+                            android:gravity="bottom|center_horizontal"
+                            android:text="04-06"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom|center_horizontal"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/humidityImageView4"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:background="#00FFFFFF"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.498"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:layout_editor_absoluteY="365dp"
+                            app:tint="#FFFFFF" />
+
+                        <TextView
+                            android:id="@+id/T0608"
+                            android:layout_width="75dp"
+                            android:layout_height="match_parent"
+                            android:gravity="bottom|center_horizontal"
+                            android:text="06-08"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom|center_horizontal"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/humidityImageView5"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:background="#00FFFFFF"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.498"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:layout_editor_absoluteY="365dp"
+                            app:tint="#FFFFFF" />
+
+                        <TextView
+                            android:id="@+id/T0810"
+                            android:layout_width="75dp"
+                            android:layout_height="match_parent"
+                            android:gravity="bottom|center_horizontal"
+                            android:text="08-10"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom|center_horizontal"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/humidityImageView6"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:background="#00FFFFFF"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.498"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:layout_editor_absoluteY="365dp"
+                            app:tint="#FFFFFF" />
+
+                        <TextView
+                            android:id="@+id/T1012"
+                            android:layout_width="75dp"
+                            android:layout_height="match_parent"
+                            android:gravity="bottom|center_horizontal"
+                            android:text="10-12"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom|center_horizontal"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/humidityImageView7"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:background="#00FFFFFF"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.498"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:layout_editor_absoluteY="365dp"
+                            app:tint="#FFFFFF" />
+
+                        <TextView
+                            android:id="@+id/T1214"
+                            android:layout_width="75dp"
+                            android:layout_height="match_parent"
+                            android:gravity="bottom|center_horizontal"
+                            android:text="12-14"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom|center_horizontal"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/humidityImageView8"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:background="#00FFFFFF"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.498"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:layout_editor_absoluteY="365dp"
+                            app:tint="#FFFFFF" />
+
+                        <TextView
+                            android:id="@+id/T1416"
+                            android:layout_width="75dp"
+                            android:layout_height="match_parent"
+                            android:gravity="bottom|center_horizontal"
+                            android:text="14-16"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom|center_horizontal"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/humidityImageView9"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:background="#00FFFFFF"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.498"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:layout_editor_absoluteY="365dp"
+                            app:tint="#FFFFFF" />
+
+                        <TextView
+                            android:id="@+id/T1618"
+                            android:layout_width="75dp"
+                            android:layout_height="match_parent"
+                            android:gravity="bottom|center_horizontal"
+                            android:text="16-18"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom|center_horizontal"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/humidityImageView10"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:background="#00FFFFFF"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.498"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:layout_editor_absoluteY="365dp"
+                            app:tint="#FFFFFF" />
+
+                        <TextView
+                            android:id="@+id/T1820"
+                            android:layout_width="75dp"
+                            android:layout_height="match_parent"
+                            android:gravity="bottom|center_horizontal"
+                            android:text="18-20"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom|center_horizontal"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/humidityImageView11"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:background="#00FFFFFF"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.498"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:layout_editor_absoluteY="365dp"
+                            app:tint="#FFFFFF" />
+
+                        <TextView
+                            android:id="@+id/T2022"
+                            android:layout_width="75dp"
+                            android:layout_height="match_parent"
+                            android:gravity="bottom|center_horizontal"
+                            android:text="20-22"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom|center_horizontal"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/humidityImageView12"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:background="#00FFFFFF"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.498"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:layout_editor_absoluteY="365dp"
+                            app:tint="#FFFFFF" />
+
+                        <TextView
+                            android:id="@+id/T2200"
+                            android:layout_width="75dp"
+                            android:layout_height="match_parent"
+                            android:gravity="bottom|center_horizontal"
+                            android:text="22-00"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+        </ScrollView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
