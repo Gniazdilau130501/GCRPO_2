@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -37,9 +38,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView city_name;
     private ImageButton SunnyButton;
     private ImageButton RainButton;
+    private ImageButton infoButton;
+    private ImageButton StarButton;
     private TextView SunnyText;
     private View RainText;
-
+    private TextView InfoText;
     public LinearLayout LinearLayout1;
 
 
@@ -56,8 +59,12 @@ public class MainActivity extends AppCompatActivity {
         city_name = findViewById(R.id.city_name);
         SunnyButton = findViewById(R.id.SunnyButton);
         RainButton = findViewById(R.id.RainButton);
+        infoButton = findViewById(R.id.infoButton);
+        StarButton = findViewById(R.id.StarButton);
         SunnyText = findViewById(R.id.SunnyText);
         RainText = findViewById(R.id.RainText);
+        InfoText = findViewById(R.id.InfoText);
+
 
 
         poiskButton.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                     new GetSunriseSunsetData().execute(url);
                     SunnyText.setVisibility(View.VISIBLE);
                     RainText.setVisibility(View.GONE);
+                    InfoText.setVisibility(View.GONE);
                 } else {
                     Toast.makeText(MainActivity.this, "Сначала введите город", Toast.LENGTH_SHORT).show();
                 }
@@ -96,10 +104,38 @@ public class MainActivity extends AppCompatActivity {
                     String city = city_name.getText().toString();
                     String key = "efb99e2eebcfda230b7c66d7cbdb9826";
                     String url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + key + "&units=metric";
-                    new GetSunriseSunsetData().execute(url);
                     new GetHumidityData().execute(url);
                     RainText.setVisibility(View.VISIBLE); // Показать ScrollView при нажатии на кнопку RainButton
                     SunnyText.setVisibility(View.GONE);
+                    InfoText.setVisibility(View.GONE);
+                } else {
+                    Toast.makeText(MainActivity.this, "Сначала введите город", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        infoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!city_name.getText().toString().isEmpty()){
+                    String city = city_name.getText().toString();
+                    String key = "efb99e2eebcfda230b7c66d7cbdb9826";
+                    String url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + key + "&units=metric&lang=ru";
+                    new GetInfoData().execute(url);
+                    RainText.setVisibility(View.GONE); // Показать ScrollView при нажатии на кнопку RainButton
+                    SunnyText.setVisibility(View.GONE);
+                    InfoText.setVisibility(View.VISIBLE);
+                }else {
+                    Toast.makeText(MainActivity.this, "Сначала введите город", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        StarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!city_name.getText().toString().isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Город добавлен в избранное", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(MainActivity.this, "Сначала введите город", Toast.LENGTH_SHORT).show();
                 }
@@ -297,11 +333,11 @@ public class MainActivity extends AppCompatActivity {
                         }
 
 
-                        if (roundedClouds <= 10) {
+                        if (roundedClouds <= 20) {
                             humidityImageView.setImageResource(R.drawable.solnechno);
-                        } else if (roundedClouds <= 20) {
+                        } else if (roundedClouds <= 40) {
                             humidityImageView.setImageResource(R.drawable.zatyanyto);
-                        } else if (roundedClouds <= 30) {
+                        } else if (roundedClouds <= 60) {
                             humidityImageView.setImageResource(R.drawable.doshdlivo);
                         } else {
                             humidityImageView.setImageResource(R.drawable.liveni);
@@ -384,6 +420,91 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+    private class GetInfoData extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... strings) {
+            HttpURLConnection connection = null;
+            BufferedReader reader = null;
+            try {
+                URL url = new URL(strings[0]);
+                connection = (HttpURLConnection) url.openConnection();
+                connection.connect();
+
+                InputStream stream = connection.getInputStream();
+                reader = new BufferedReader(new InputStreamReader(stream));
+
+                StringBuilder buffer = new StringBuilder();
+                String line;
+
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line).append("\n");
+                }
+
+                String data = buffer.toString();
+                Log.d("JSON_DATA", data); // Добавленный код
+
+                return data;
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            } finally {
+                if (connection != null) {
+                    connection.disconnect();
+                }
+                if (reader != null) {
+                    try {
+                        reader.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        @SuppressLint("SetTextI18n")
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            try {
+                if (result != null) {
+                    JSONObject jsonObject = new JSONObject(result);
+                    if (jsonObject.has("main")) {
+                        JSONObject main = jsonObject.getJSONObject("main");
+
+                        double feelsLike = main.getDouble("feels_like");
+                        double temp_max = main.getDouble("temp_max");
+                        double temp_min = main.getDouble("temp_min");
+                        int humidity = main.getInt("humidity");
+
+                        JSONObject wind = jsonObject.getJSONObject("wind");
+                        double windSpeed = wind.getDouble("speed");
+
+                        JSONObject sys = jsonObject.getJSONObject("sys");
+                        String region = sys.getString("country");
+
+                        JSONArray weatherArray = jsonObject.getJSONArray("weather");
+                        JSONObject weather = weatherArray.getJSONObject(0);
+                        String description = weather.getString("description");
+
+
+                        String weatherInfo = "Регион: " + region + "\n"
+                                + "Ощущается как: " + feelsLike + "\n"
+                                + "Макс. температура: " + temp_max + "\n"
+                                + "Мин. температура: " + temp_min + "\n"
+                                + "Влажность: "  + humidity + "\n"
+                                + "Скорость ветра: " + windSpeed + "\n"
+                                + "Описание погоды: " + description;
+                        InfoText.setText(weatherInfo);
+                    }
+                } else {
+                    Toast.makeText(MainActivity.this, "Ошибка: Некорректные данные об общей информации", Toast.LENGTH_LONG).show();
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }
 
