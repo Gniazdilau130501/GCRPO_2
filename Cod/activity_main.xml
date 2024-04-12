@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
@@ -12,7 +11,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
 
         <EditText
@@ -80,6 +78,58 @@
             tools:ignore="MissingConstraints" />
 
         <ImageButton
+            android:id="@+id/infoButton"
+            android:layout_width="70dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="#040116"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.606"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.96"
+            app:srcCompat="@drawable/info"
+            app:tint="#FFFCFC"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/StarButton"
+            android:layout_width="70dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#00040116"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.975"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.196"
+            app:srcCompat="@drawable/star"
+            app:tint="#FFFEFE"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/InfoText"
+            android:layout_width="420dp"
+            android:layout_height="258dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/wendy_one"
+            android:textColor="#F6F6F6"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageButton
             android:id="@+id/SunnyButton"
             android:layout_width="70dp"
             android:layout_height="64dp"
@@ -97,6 +147,7 @@
             app:tint="#FFFCFC"
             tools:ignore="SpeakableTextPresentCheck" />
 
+
         <ImageButton
             android:id="@+id/RainButton"
             android:layout_width="67dp"
@@ -107,15 +158,13 @@
             android:scaleType="fitCenter"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.734"
+            app:layout_constraintHorizontal_bias="0.758"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.961"
+            app:layout_constraintVertical_bias="0.96"
             app:srcCompat="@drawable/rainicon"
             app:tint="#FFFFFF"
             tools:ignore="SpeakableTextPresentCheck" />
-
-
 
         <TextView
             android:id="@+id/SunnyText"
@@ -129,7 +178,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
 
         <ScrollView
@@ -172,8 +220,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.498"
                             app:layout_constraintStart_toStartOf="parent"
-                            tools:layout_editor_absoluteY="365dp"
-                            app:tint="#FFFFFF" />
+                            app:tint="#FFFFFF"
+                            tools:layout_editor_absoluteY="365dp" />
 
                         <TextView
                             android:id="@+id/T0002"
@@ -203,8 +251,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.498"
                             app:layout_constraintStart_toStartOf="parent"
-                            tools:layout_editor_absoluteY="365dp"
-                            app:tint="#FFFFFF" />
+                            app:tint="#FFFFFF"
+                            tools:layout_editor_absoluteY="365dp" />
 
                         <TextView
                             android:id="@+id/T0204"
@@ -233,8 +281,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.498"
                             app:layout_constraintStart_toStartOf="parent"
-                            tools:layout_editor_absoluteY="365dp"
-                            app:tint="#FFFFFF" />
+                            app:tint="#FFFFFF"
+                            tools:layout_editor_absoluteY="365dp" />
 
                         <TextView
                             android:id="@+id/T0406"
@@ -263,8 +311,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.498"
                             app:layout_constraintStart_toStartOf="parent"
-                            tools:layout_editor_absoluteY="365dp"
-                            app:tint="#FFFFFF" />
+                            app:tint="#FFFFFF"
+                            tools:layout_editor_absoluteY="365dp" />
 
                         <TextView
                             android:id="@+id/T0608"
@@ -293,8 +341,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.498"
                             app:layout_constraintStart_toStartOf="parent"
-                            tools:layout_editor_absoluteY="365dp"
-                            app:tint="#FFFFFF" />
+                            app:tint="#FFFFFF"
+                            tools:layout_editor_absoluteY="365dp" />
 
                         <TextView
                             android:id="@+id/T0810"
@@ -323,8 +371,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.498"
                             app:layout_constraintStart_toStartOf="parent"
-                            tools:layout_editor_absoluteY="365dp"
-                            app:tint="#FFFFFF" />
+                            app:tint="#FFFFFF"
+                            tools:layout_editor_absoluteY="365dp" />
 
                         <TextView
                             android:id="@+id/T1012"
@@ -353,8 +401,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.498"
                             app:layout_constraintStart_toStartOf="parent"
-                            tools:layout_editor_absoluteY="365dp"
-                            app:tint="#FFFFFF" />
+                            app:tint="#FFFFFF"
+                            tools:layout_editor_absoluteY="365dp" />
 
                         <TextView
                             android:id="@+id/T1214"
@@ -383,8 +431,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.498"
                             app:layout_constraintStart_toStartOf="parent"
-                            tools:layout_editor_absoluteY="365dp"
-                            app:tint="#FFFFFF" />
+                            app:tint="#FFFFFF"
+                            tools:layout_editor_absoluteY="365dp" />
 
                         <TextView
                             android:id="@+id/T1416"
@@ -413,8 +461,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.498"
                             app:layout_constraintStart_toStartOf="parent"
-                            tools:layout_editor_absoluteY="365dp"
-                            app:tint="#FFFFFF" />
+                            app:tint="#FFFFFF"
+                            tools:layout_editor_absoluteY="365dp" />
 
                         <TextView
                             android:id="@+id/T1618"
@@ -443,8 +491,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.498"
                             app:layout_constraintStart_toStartOf="parent"
-                            tools:layout_editor_absoluteY="365dp"
-                            app:tint="#FFFFFF" />
+                            app:tint="#FFFFFF"
+                            tools:layout_editor_absoluteY="365dp" />
 
                         <TextView
                             android:id="@+id/T1820"
@@ -473,8 +521,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.498"
                             app:layout_constraintStart_toStartOf="parent"
-                            tools:layout_editor_absoluteY="365dp"
-                            app:tint="#FFFFFF" />
+                            app:tint="#FFFFFF"
+                            tools:layout_editor_absoluteY="365dp" />
 
                         <TextView
                             android:id="@+id/T2022"
@@ -503,8 +551,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.498"
                             app:layout_constraintStart_toStartOf="parent"
-                            tools:layout_editor_absoluteY="365dp"
-                            app:tint="#FFFFFF" />
+                            app:tint="#FFFFFF"
+                            tools:layout_editor_absoluteY="365dp" />
 
                         <TextView
                             android:id="@+id/T2200"
@@ -520,6 +568,8 @@
                 </LinearLayout>
             </HorizontalScrollView>
         </ScrollView>
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
